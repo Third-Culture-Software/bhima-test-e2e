@@ -1,0 +1,14 @@
+
+# Update the BHIMA repo first
+pushd /home/bhima/builds/Bhima
+git pull
+# Temporarily modify the .dockerignore file to allow copying the 'test' directory
+sed -i '/^test/d' .dockerignore
+popd
+
+sudo docker build -f /home/bhima/builds/Dockerfile -t bhima/e2e-tests:v1 /home/bhima/builds/Bhima
+
+# Restore the .dockerignore file
+pushd /home/bhima/builds/Bhima
+git checkout .dockerignore
+popd
