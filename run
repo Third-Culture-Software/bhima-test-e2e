@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# sudo docker run --privileged --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro  -it bhima/e2e-tests:v1 bash
+
+# Clean out old container
+sudo docker rm bhima-e2e-server
+
+# Run a new container
+sudo docker run \
+  --name bhima-e2e-server \
+  --hostname bhima \
+  --volume /home/bhima/mysql:/var/mysql \
+  -it bhima/e2e-tests:v1 bash
