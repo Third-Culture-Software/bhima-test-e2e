@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start MySQL
-# systemctl enable mysql
+systemctl enable mysql
 chown mysql.mysql /var/mysql
 mkdir -p /var/mysql/mysqld >& /dev/null
 mkdir -p /var/mysql/home >& /dev/null
@@ -10,8 +10,5 @@ service mysql start
 
 # Start redis
 systemctl enable redis-server
-service redis start
+service redis-server start
 
-service mysql status
-
-service redis status

@@ -9,7 +9,6 @@ IMAGE_NAME=bhima/e2e-tests:v1
 
 # Update the BHIMA repo first
 echo "Updating BHIMA repo"
-cp ./setup.bash Bhima/
 pushd /home/bhima/builds/Bhima >& /dev/null
 git pull
 

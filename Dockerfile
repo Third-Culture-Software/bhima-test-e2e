@@ -57,9 +57,6 @@ RUN useradd -m -d /home/bhima -s /bin/bash -g bhima bhima
 # make sure the bhima test user is the owner of all the underlying files.
 RUN chown -R bhima:bhima /usr/src/app
 
-COPY setup.bash . 
-RUN chmod +x setup.bash
-
 # # # # # yarn build creates the bin/ folder
 # # # # COPY .env bin/
 # # # 
