@@ -2,8 +2,10 @@
 
 # sudo docker run --privileged --tmpfs /tmp --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro  -it bhima/e2e-tests:v1 bash
 
-# Clean out old container
-sudo docker rm bhima-e2e-server
+# Clean out old container (if it exists)
+if (sudo docker ps -a | grep bhima-e2e-server) >& /dev/null; then
+    sudo docker rm bhima-e2e-server
+fi
 
 # Run a new container
 sudo docker run \
