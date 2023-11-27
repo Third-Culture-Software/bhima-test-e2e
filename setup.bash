@@ -4,7 +4,8 @@
 # systemctl enable mysql
 chown mysql.mysql /var/mysql
 mkdir -p /var/mysql/mysqld >& /dev/null
-# usermod -d /var/mysql mysql
+mkdir -p /var/mysql/home >& /dev/null
+usermod -d /var/mysql/home mysql
 service mysql start
 
 # Start redis
