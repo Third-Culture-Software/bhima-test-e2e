@@ -11,6 +11,7 @@ fi
 sudo docker run \
   --name bhima-e2e-server \
   --hostname bhima \
-  --volume /home/bhima/mysql:/var/mysql \
+  -e "DEFAULT_BHIMA_DB_PASSWORD=$(openssl rand -hex 20)" \
   --volume /home/bhima/builds/scripts:/usr/src/app/scripts \
+  --volume /home/bhima/mysql:/var/mysql \
   -it bhima/e2e-tests:v1 bash

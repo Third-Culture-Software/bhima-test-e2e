@@ -22,6 +22,10 @@ RUN apt install -y sudo openssh-server git rsync wget curl gnupg ca-certificates
 RUN apt install -y mysql-server
 RUN apt install -y mysql-client
 
+# Configure MySQL
+RUN echo 'sql-mode = "STRICT_ALL_TABLES,NO_UNSIGNED_SUBTRACTION"' >> /etc/mysql/mysql.conf.d/mysqld.cnf
+RUN echo 'authentication-policy=mysql_native_password' >> /etc/mysql/mysql.conf.d/mysqld.cnf
+
 # Start MySQL
 # RUN systemctl enable mysql-server
 # RUN mkdir /var/run/mysqld; chown mysql.mysql /var/run/mysqld
@@ -41,21 +45,28 @@ RUN apt update
 RUN apt install -y nodejs
 RUN npm install -g npm@10.2.4
 
+# Install yarn (without re-installing NodeJS)
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && sudo apt install yarn --no-install-recommends
+
+RUN npx playwright install
+
 # define working directory inside the container
 WORKDIR /usr/src/app
 
 # Copy all the source code from host machine to the container project directory
 COPY . .
 
-# Install the node dependenicies
-RUN npm install  # SLOW > 350s
+# # Install the node dependenicies
+# RUN npm install --omit=dev  # SLOW > 300s
 
 # Create the test user
 RUN groupadd bhima
 RUN useradd -m -d /home/bhima -s /bin/bash -g bhima bhima
 
 # make sure the bhima test user is the owner of all the underlying files.
-RUN chown -R bhima:bhima /usr/src/app
+# RUN chown -R bhima:bhima /usr/src/app  # SLOW!
 
 # # # # # yarn build creates the bin/ folder
 # # # # COPY .env bin/
