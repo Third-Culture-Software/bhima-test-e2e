@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Prevent test failures from stopping the script
-# set -eo pipefail
-set +e
-trap - ERR
+set +e -o pipefail
 
 # Update BHIMA to latest master
 cd /home/bhima/Bhima
@@ -12,8 +10,8 @@ git pull
 yarn
 
 # Modify the playwright configuration to avoid interactive display of errors via web page
-sed -i -e "s/outputFolder/open/g" playwright.config.js
-sed -i -e "s/results\/playwright-report/never/g" playwright.config.js
+# sed -i -e "s/outputFolder/open/g" playwright.config.js
+# sed -i -e "s/results\/playwright-report/never/g" playwright.config.js
 
 # Clean any old test results files
 npm run test:clean
@@ -30,6 +28,7 @@ npm run test || true
 echo "================================================================================"
 date
 set +e
+export E2E_TEST_SERVER=1
 export PWTEST_SKIP_TEST_OUTPUT=1
 npm run test:e2e-all || true
 echo "================================================================================"
