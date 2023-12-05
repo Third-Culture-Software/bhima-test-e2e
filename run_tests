@@ -4,7 +4,7 @@
 set +e -o pipefail
 
 # Update BHIMA to latest master
-cd /home/bhima/Bhima
+cd /home/jenkins/Bhima
 git checkout playwright.config.js
 git pull
 yarn
