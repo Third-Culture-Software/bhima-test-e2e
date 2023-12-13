@@ -23,10 +23,6 @@ git pull
 yarn
 npx playwright install
 
-# Modify the playwright configuration to avoid interactive display of errors via web page
-# sed -i -e "s/outputFolder/open/g" playwright.config.js
-# sed -i -e "s/results\/playwright-report/never/g" playwright.config.js
-
 # Clean any old test results files and processes
 npm run test:clean
 pkill --uid jenkins -f puppeteer || true
