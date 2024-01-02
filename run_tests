@@ -21,7 +21,7 @@ git pull
 
 # Update the testing environment
 yarn
-npx playwright install
+npx playwright install chromium
 
 # Clean any old test results files and processes
 npm run test:clean
