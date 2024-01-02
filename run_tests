@@ -14,10 +14,11 @@ cd /home/jenkins/builds/Bhima
 git checkout master
 git pull
 
-# To run tests on a pull requst (comment out 'git pull' above)
-# git branch -D test7372 || true
-# git fetch origin pull/7372/head:test7372
-# git checkout test7372
+# To run tests on a pull requst
+# PRNUM=7372
+# git branch -D test$PRNUM || true
+# git fetch origin pull/$PRNUM/head:test$PRNUM
+# git checkout test$PRNUM
 
 # Update the testing environment
 yarn
