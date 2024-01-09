@@ -63,6 +63,7 @@ npm run test:show-results
 
 # Save the artifacts for Jenkins
 npm run test:show-results > results/summary.txt
+printenv | sort > results/environment.txt
 zip -r results.zip results -x results/playwright-report/\*
 cp -r results $HOME_DIR/
 cp results.zip $HOME_DIR/
