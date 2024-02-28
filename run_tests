@@ -15,13 +15,14 @@ git checkout master
 git pull
 
 # To run tests on a pull requst
-# PRNUM=7372
+# PRNUM=7450
 # git branch -D test$PRNUM || true
 # git fetch origin pull/$PRNUM/head:test$PRNUM
 # git checkout test$PRNUM
 
 # Update the testing environment
 yarn
+npx update-browserslist-db@latest
 npx playwright install chromium
 
 # Clean any old test results files and processes
@@ -64,6 +65,7 @@ npm run test:show-results
 # Save the artifacts for Jenkins
 npm run test:show-results > results/summary.txt
 printenv | sort > results/environment.txt
-zip -r results.zip results -x results/playwright-report/\*
+rm -f results.zip
+zip -r results.zip results
 cp -r results $HOME_DIR/
 cp results.zip $HOME_DIR/
