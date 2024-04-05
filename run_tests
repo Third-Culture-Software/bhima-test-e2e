@@ -11,6 +11,7 @@ export CHROME_OPTIONS="--headless"
 
 # Update BHIMA to latest master
 cd /home/jenkins/builds/Bhima
+git checkout yarn.lock
 git checkout master
 git pull
 
@@ -38,6 +39,9 @@ then
     echo "Deleting zombie node Bhima process $proc"
     kill -9 $proc
 fi
+
+# Do one preliminary build to be safee
+npm run build
 
 # Run the regular tests
 echo "================================================================================"
