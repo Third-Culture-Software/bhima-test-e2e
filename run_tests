@@ -11,7 +11,7 @@ export CHROME_OPTIONS="--headless"
 
 # Update BHIMA to latest master
 cd /home/jenkins/builds/Bhima
-git checkout yarn.lock
+git checkout package-lock.json
 git checkout master
 git pull
 
@@ -22,7 +22,7 @@ git pull
 # git checkout test$PRNUM
 
 # Update the testing environment
-yarn
+npm run install
 npx update-browserslist-db@latest
 npx playwright install chromium
 
