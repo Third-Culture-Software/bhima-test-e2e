@@ -22,7 +22,7 @@ git pull
 # git checkout test$PRNUM
 
 # Update the testing environment
-npm run install
+npm install
 npx update-browserslist-db@latest
 npx playwright install chromium
 
