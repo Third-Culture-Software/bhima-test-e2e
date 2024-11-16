@@ -20,14 +20,14 @@ Setup files for the BHIMA End-to-End test server
 - CLONE THIS REPOSITORY in the <user-account> account
   - log in as <user-account>
   - `cd /home/<user-account>`
-  - `git clone git@github.com:IMA-WorldHealth/bhima-test-e2e.git builds`
+  - `git clone git@github.com:Third-Culture-Software/bhima-test-e2e.git builds`
   - `ln -s /home/<user-account>/builds/run_tests . `
 
 ## Set up BHIMA
 - log in as <user-account>
 - `cd /home/<user-account>/builds`
 - clone the Bhima repo from IMA World Health
-   - `git clone https://github.com/IMA-WorldHealth/bhima.git Bhima`
+   - `git clone https://github.com/Third-Culture-Software/bhima.git Bhima`
 
 ## Set up the jenkins server agent as a docker image
 - https://www.jenkins.io/doc/book/using/using-agents/
