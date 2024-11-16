@@ -6,6 +6,7 @@ Setup files for the BHIMA End-to-End test server
 - Note: If the installation is on bare metal, either Ubuntu LTS Desktop or Debian will work.
   But if you are running on a container, there may be difficulties with installing snap
   versions of `mysql-server` on Ubuntu, so use Debian instead.
+- Install zip (sudo apt install zip); it is needed by the 'run_tests' script
 
 ## Set up Docker
 - See https://docs.bhi.ma/en/for-developers/installing-bhima.html
