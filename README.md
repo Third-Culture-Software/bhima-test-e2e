@@ -28,6 +28,7 @@ Setup files for the BHIMA End-to-End test server
 - `cd /home/<user>/builds`
 - clone the Bhima repo from IMA World Health
    - `git clone https://github.com/Third-Culture-Software/bhima.git Bhima`
+   - Set up an appropriate .env file with db passwords, etc (see .env.sample)
 
 ## Set up the jenkins server agent as a docker image
 - https://www.jenkins.io/doc/book/using/using-agents/
