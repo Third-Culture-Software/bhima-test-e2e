@@ -40,7 +40,7 @@ then
     kill -9 $proc
 fi
 
-# Do one preliminary build to be safee
+# Do one preliminary build to be safe
 npm run build
 
 # Run the regular tests
