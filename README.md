@@ -18,7 +18,7 @@ Setup files for the BHIMA End-to-End test server
 
 ## Set up the Jenkins test agent files
 - CLONE THIS REPOSITORY in the `<user>` account
-  - log in as `<user>`
+  - log in as `<user>` (you may need to 'su <user>' to do this)
   - `cd /home/<user>`
   - `git clone git@github.com:Third-Culture-Software/bhima-test-e2e.git builds`
   - `ln -s /home/<user>/builds/run_tests . `
@@ -28,14 +28,19 @@ Setup files for the BHIMA End-to-End test server
 - `cd /home/<user>/builds`
 - clone the Bhima repo from IMA World Health
    - `git clone https://github.com/Third-Culture-Software/bhima.git Bhima`
+   - See [Dev Install Docs](https://docs.bhi.ma/en/for-developers/installing-bhima.html)
    - Set up an appropriate .env file with db passwords, etc (see .env.sample)
-- See [Dev Install Docs](https://docs.bhi.ma/en/for-developers/installing-bhima.html)
+   - Verify tests run manually before proceeding (fix any configuration issues)
+     - `npm install'
+     - `npm run test:clean`
+     - `npm run test`
+     - `npm run test:e2e-account`
 
 ## Set up the jenkins server agent as a docker image
 - https://www.jenkins.io/doc/book/using/using-agents/
 - https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/
 
-- RUN THE TESTS
+- RUN THE TESTS (like Jenkins will)
   - `cd <user>`
   - Test it: `./run_tests`
 
