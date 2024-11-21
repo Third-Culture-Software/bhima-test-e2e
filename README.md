@@ -34,6 +34,7 @@ Setup files for the BHIMA End-to-End test server
      - `npm install`
      - `npm run test:clean`
      - `npm run test`
+     - `npx playwright install chromium`
      - `npm run test:e2e-account`
 
 ## Set up the jenkins server agent as a docker image
