@@ -11,22 +11,26 @@ export CHROME_OPTIONS="--headless"
 
 # Update BHIMA to latest master
 cd /home/jenkins/builds/Bhima
+git checkout package.json
 git checkout package-lock.json
-git checkout master
-git pull
 
-# To run tests on a pull requst
-# PRNUM=7450
-# git branch -D test$PRNUM || true
-# git fetch origin pull/$PRNUM/head:test$PRNUM
-# git checkout test$PRNUM
+if [[ -z "${PULL_REQUEST" ]]; then
+    # Run the tests on master
+    git checkout master
+    git pull
+else
+    # Run the tests on a pull request (first delete any old branch)
+    git branch -D test${PULL_REQUEST} || true
+    git git fetch origin pull/${PULL_REQUEST}/head:test${PULL_REQUEST}
+    git checkout test${PULL_REQUEST}
+fi
 
 # Update the testing environment
 npm install
 npx update-browserslist-db@latest
 npx playwright install chromium
 
-# Clean any old test results files and processes
+# Delete any old test results files and processes
 npm run test:clean
 pkill --uid jenkins -f puppeteer || true
 pkill --uid jenkins -f node || true

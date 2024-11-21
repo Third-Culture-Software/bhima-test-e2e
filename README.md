@@ -44,5 +44,16 @@ Setup files for the BHIMA End-to-End test server
   - `cd <user>`
   - Test it: `./run_tests`
 
+## To run the tests on a branch
+- Go to the Jenkins server GUI
+- Click on the test suite manager (one level down from the Dashboard)
+- Click on the "Build Executor Status" link (lower left)
+- Select the node you want to use to test the pull request then
+  edit its configuration (Click on the gear on the end of the line for the node)
+- Under the "Node Properties", enable the "Environment variables" section
+- Add an environment varible `PULL_REQUEST` and set its value to the number of the pull request
+- Click on the [Save] button below
+- To go back to testing master, delete the PULL_REQUEST environment varable and save
+
 ## Note:
 - Early attempts to run the tests in a Docker container were not succesful.  Those files have been moved to the 'docker' folder.  Files and scripts for Docker containers are in the 'docker' folder.
