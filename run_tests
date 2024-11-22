@@ -20,9 +20,9 @@ if [[ -z "${PULL_REQUEST" ]]; then
     git pull
 else
     # Run the tests on a pull request (first delete any old branch)
-    git branch -D test${PULL_REQUEST} || true
-    git git fetch origin pull/${PULL_REQUEST}/head:test${PULL_REQUEST}
-    git checkout test${PULL_REQUEST}
+    git branch -D test$PULL_REQUEST || true
+    git git fetch origin pull/$PULL_REQUEST/head:test$PULL_REQUEST
+    git checkout test$PULL_REQUEST
 fi
 
 # Update the testing environment
