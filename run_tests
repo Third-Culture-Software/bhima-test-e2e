@@ -15,11 +15,11 @@ git checkout package.json
 git checkout package-lock.json
 
 if [[ -z "$PULL_REQUEST" ]]; then
-    # Run the tests on master
+    echo "====> Run tests on master"
     git checkout master
     git pull
 else
-    # Run the tests on a pull request (first delete any old branch)
+    echo "====> Run tests on pull request $PULL_REQUEST"
     git branch -D test$PULL_REQUEST || true
     git git fetch origin pull/$PULL_REQUEST/head:test$PULL_REQUEST
     git checkout test$PULL_REQUEST
