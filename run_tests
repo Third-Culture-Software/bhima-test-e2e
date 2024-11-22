@@ -14,7 +14,7 @@ cd /home/jenkins/builds/Bhima
 git checkout package.json
 git checkout package-lock.json
 
-if [[ -z "${PULL_REQUEST" ]]; then
+if [[ -z "$PULL_REQUEST" ]]; then
     # Run the tests on master
     git checkout master
     git pull
