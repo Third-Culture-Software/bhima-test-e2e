@@ -17,16 +17,16 @@ Setup files for the BHIMA End-to-End test server
 - `sudo usermod -a -G sudo <user>`
 
 ## Set up the Jenkins test agent files
-- CLONE THIS REPOSITORY in the `<user>` account
+- CLONE THIS REPOSITORY in the `<user>` account (read-only)
   - log in as `<user>` (you may need to 'su <user>' to do this)
   - `cd /home/<user>`
-  - `git clone git@github.com:Third-Culture-Software/bhima-test-e2e.git builds`
+  - `git clone https://github.com:Third-Culture-Software/bhima-test-e2e.git builds`
   - `ln -s /home/<user>/builds/run_tests . `
 
 ## Set up BHIMA
 - log in as `<user>` (you may need to 'su <user>' to do this)
 - `cd /home/<user>/builds`
-- clone the Bhima repo from IMA World Health
+- clone the Bhima repo from Third Culture Software (read-only)
    - `git clone https://github.com/Third-Culture-Software/bhima.git Bhima`
    - See [Dev Install Docs](https://docs.bhi.ma/en/for-developers/installing-bhima.html)
    - Set up an appropriate .env file with db passwords, etc (see .env.sample)
