@@ -21,7 +21,7 @@ if [[ -z "$PULL_REQUEST" ]]; then
 else
     echo "====> Run tests on pull request $PULL_REQUEST"
     git branch -D test$PULL_REQUEST || true
-    git git fetch origin pull/$PULL_REQUEST/head:test$PULL_REQUEST
+    git fetch origin pull/$PULL_REQUEST/head:test$PULL_REQUEST
     git checkout test$PULL_REQUEST
 fi
 
