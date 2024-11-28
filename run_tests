@@ -30,6 +30,9 @@ npm install
 npx update-browserslist-db@latest
 npx playwright install chromium
 
+# Save the start time (for the actual tests)
+time_start=$(date +%s)
+
 # Delete any old test results files and processes
 npm run test:clean
 pkill --uid jenkins -f puppeteer || true
@@ -63,6 +66,10 @@ npm run test:e2e-all || true
 echo "================================================================================"
 date
 
+# Save the end time
+time_end=$(date +%s)
+final_time=$(date)
+
 # Clean up
 pkill --uid jenkins -f puppeteer || true
 pkill --uid jenkins -f node || true
@@ -70,9 +77,19 @@ pkill --uid jenkins -f node || true
 # Show the summary
 npm run test:show-results
 
+# Compute the time it took the tests to run
+time_total=$(($time_end - $time_start))
+mins=$(($time_total / 60))
+secs=$(($time_total - ($mins*60)))
+printf -v dtime "%02d:%02d\n" "$mins" "$secs"
+
 # Save the artifacts for Jenkins
 npm run test:show-results > results/summary.txt
+echo "Ending time: $final_time" >> results/summary.txt
+echo "Time to run tests: $dtime" >> results/summary.txt
+
 printenv | sort > results/environment.txt
+
 rm -f results.zip
 zip -r results.zip results
 cp -r results $HOME_DIR/
