@@ -90,6 +90,9 @@ echo "Time to run tests: $dtime" >> results/summary.txt
 
 printenv | sort > results/environment.txt
 
+cp package.json results/
+
+
 rm -f results.zip
 zip -r results.zip results
 cp -r results $HOME_DIR/
