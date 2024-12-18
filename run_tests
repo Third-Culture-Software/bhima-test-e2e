@@ -8,6 +8,7 @@ set +e -o pipefail
 
 export CHROME_BIN=`which chromium`
 export CHROME_OPTIONS="--headless"
+export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
 # Update BHIMA to latest master
 cd /home/jenkins/builds/Bhima
