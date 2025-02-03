@@ -1,0 +1,5 @@
+# Cron file to update and reboot the build server nightly
+
+/usr/bin/apt update -y
+/usr/bin/apt upgrade -y
+/usr/sbin/reboot now
