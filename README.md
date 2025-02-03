@@ -45,6 +45,14 @@ Setup files for the BHIMA End-to-End test server
   - `cd <user>`
   - Test it: `./run_tests`
 
+## Set up cron to reboot nightly
+In some cases, the build-up of temporary files (in /tmp) can lead to the lack of disk space to 
+successfully run builds.  In that case, the simplest fix is to reboot the build computer nigtly.
+The script `update_reboot` does that as well as make sure that the system is updated nightly.
+Install this using crontab.  Here is an example crontab line:
+
+  `0 23 * * * /root/update_reboot`
+
 ## To run the tests on a pull request branch
 - Go to the Jenkins server GUI
 - Click on the test suite manager (one level down from the Dashboard)
