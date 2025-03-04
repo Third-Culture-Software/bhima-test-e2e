@@ -87,8 +87,13 @@ printf -v dtime "%02d:%02d\n" "$mins" "$secs"
 
 # Save the artifacts for Jenkins
 npm run test:show-results > results/summary.txt
+
 echo "Ending time: $final_time" >> results/summary.txt
+
+echo >> results/summary.txt
 echo "Time to run tests: $dtime" >> results/summary.txt
+
+df -h / >> results/summary.txt
 
 printenv | sort > results/environment.txt
 
