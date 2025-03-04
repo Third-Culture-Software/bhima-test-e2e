@@ -1,0 +1,3 @@
+# Cron file to delete all /tmp files that were last modified more than a day ago
+
+find /tmp -mmin +1440 -delete

@@ -45,13 +45,13 @@ Setup files for the BHIMA End-to-End test server
   - `cd <user>`
   - Test it: `./run_tests`
 
-## Set up cron to reboot nightly
+## Set up cron to purge the /tmp directory nightly
 In some cases, the build-up of temporary files (in /tmp) can lead to the lack of disk space to 
-successfully run builds.  In that case, the simplest fix is to reboot the build computer nigtly.
-The script `update_reboot` does that as well as make sure that the system is updated nightly.
+successfully run builds.  In that case, a fix is to purge the build computer nigtly.
+The script `purge_tmp` does that as well as make sure that the system is cleaned nightly.
 Install this using crontab.  Here is an example crontab line (adjust the path as needed):
 
-  `0 23 * * * /home/jenkins/builds/update_reboot`
+  `0 23 * * * /home/jenkins/builds/purge_tmp`
 
 ## To run the tests on a pull request branch
 - Go to the Jenkins server GUI
