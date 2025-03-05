@@ -1,3 +1,4 @@
-# Cron file to delete all /tmp files that were last modified more than a day ago
+# Cron file to delete all jenkins build /tmp files that were last modified more than a day ago
 
-find /tmp -mmin +1440 -delete
+find /tmp -regextype posix-egrep -regex '/tmp/[0-9a-f]{32,32}$' -mmin +1440 -delete
+find /tmp -name 'puppeteer_dev_chrome_profile-*' -mmin +1440 -delete
