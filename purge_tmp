@@ -2,3 +2,4 @@
 
 find /tmp -regextype posix-egrep -regex '/tmp/[0-9a-f]{32,32}$' -mmin +1440 -exec rm -r {} \;
 find /tmp -name 'puppeteer_dev_chrome_profile-*' -mmin +1440 -exec rm -r {} \;
+find /tmp -name '.org.chromium.Chromium.*' -mmin +1440 -exec rm -r {} \;
